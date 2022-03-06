@@ -474,7 +474,7 @@ final class Converters {
 
         @Override
         public String convertTo(Enum<?> element, ConversionInfo info) {
-            return element.toString();
+            return element.name();
         }
 
         @Override
