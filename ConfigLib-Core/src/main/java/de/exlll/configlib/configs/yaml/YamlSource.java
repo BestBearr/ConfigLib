@@ -6,6 +6,7 @@ import de.exlll.configlib.configs.yaml.YamlConfiguration.YamlProperties;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
@@ -39,7 +40,7 @@ final class YamlSource implements ConfigurationSource<YamlConfiguration> {
                 yaml.dump(map), config.getComments(), props
         );
         String commentedDump = adder.getCommentedDump();
-        Files.write(configPath, commentedDump.getBytes());
+        Files.write(configPath, Arrays.asList(commentedDump.split("\n")), StandardCharsets.UTF_8);
     }
 
     private void createParentDirectories() throws IOException {
